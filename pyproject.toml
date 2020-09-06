@@ -1,10 +1,14 @@
 [tool.poetry]
 name = "sscream_brain_games"
 version = "0.3.0"
-description = "First python project on hexlet"
+description = "Brain games project on hexlet"
 authors = ["Sergey Sakirko <ssakirko@mail.ru>"]
+repository="https://github.com/sscream/python-project-lvl1"
 packages = [
     { include = "brain_games" },
+]
+classifiers = [
+    "Topic :: Education"
 ]
 
 [tool.poetry.scripts]
