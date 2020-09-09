@@ -1,34 +1,38 @@
 import typing
-from brain_games.cli import get_user_answer, welcome
-from brain_games.games.meta import GameRound
+import prompt
+
+from brain_games.meta import GameRound
 
 
 def run(
-    game: typing.Callable[[], GameRound],
-    description: str, rounds: int = 3
+    round_starter: typing.Optional[typing.Callable[[], GameRound]] = None,
+    description: str = '', rounds_total: int = 3
 ):
-    print(f'Welcome to the Brain Games!\n{description}')
+    print('Welcome to the Brain Games!')
+    print(description)
 
-    round_num = 0
+    name = prompt.string('May I have your name? ')
+    print(f'Hello {name}')
 
-    name = welcome()
+    if round_starter is not None:
+        current_round_num = 0
 
-    while round_num < rounds:
-        game_round = game()
+        while current_round_num < rounds_total:
+            question, answer = round_starter()
 
-        print(game_round.question)
+            print(f'Question: {question}')
 
-        user_answer = get_user_answer()
+            user_answer = prompt.string("Your answer: ")
 
-        if user_answer == game_round.answer:
-            print('Correct!')
-            round_num += 1
-        else:
-            print(
-                f"'{user_answer}' is wrong answer ;(. "
-                f"Correct answer was '{game_round.answer}'. "
-                f"Let's try again, {name}!"
-            )
-            return
+            if user_answer == answer:
+                print('Correct!')
+                current_round_num += 1
+            else:
+                print(
+                    f"'{user_answer}' is wrong answer ;(. "
+                    f"Correct answer was '{answer}'. "
+                    f"Let's try again, {name}!"
+                )
+                return
 
-    print(f'Congratulations! {name}')
+        print(f'Congratulations! {name}')

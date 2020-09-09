@@ -1,6 +1,9 @@
 import random
 
-from .meta import GameRound
+from brain_games.meta import GameRound
+
+
+DESCRIPTION = 'Find the greatest common divisor of given numbers.'
 
 
 def compute_gcd(a, b):
@@ -10,7 +13,7 @@ def compute_gcd(a, b):
         return compute_gcd(b, a % b)
 
 
-def game() -> GameRound:
+def prepare_round() -> GameRound:
     a = random.randint(0, 100)
     b = random.randint(0, 100)
 

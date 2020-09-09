@@ -1,11 +1,11 @@
-from brain_games.games.brain_even import game
+from brain_games.games import brain_even
 from brain_games.engine import run
 
 
 def main():
     run(
-        game=game,
-        description='Answer "yes" if number even otherwise answer "no".'
+        round_starter=brain_even.prepare_round,
+        description=brain_even.DESCRIPTION
     )
 
 

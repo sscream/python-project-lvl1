@@ -2,7 +2,10 @@ from random import randint
 from math import sqrt
 from itertools import count, islice
 
-from .meta import GameRound
+from brain_games.meta import GameRound
+
+
+DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 
 
 def is_prime(n):
@@ -16,7 +19,7 @@ def is_prime(n):
     return True
 
 
-def game() -> GameRound:
+def prepare_round() -> GameRound:
     num = randint(0, 100)
 
     return GameRound(

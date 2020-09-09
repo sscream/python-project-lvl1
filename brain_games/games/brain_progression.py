@@ -1,9 +1,12 @@
 from random import randint
 
-from .meta import GameRound
+from brain_games.meta import GameRound
 
 
-def game() -> GameRound:
+DESCRIPTION = 'What number is missing in the progression?'
+
+
+def prepare_round() -> GameRound:
     length = 10
 
     start = randint(0, 100)

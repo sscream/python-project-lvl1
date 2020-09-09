@@ -1,21 +1,25 @@
 import operator
 import random
 
-from .meta import GameRound
+from brain_games.meta import GameRound
 
 
-def game() -> GameRound:
-    operators = (
+DESCRIPTION = 'What is the result of the expression?'
+
+
+def prepare_round() -> GameRound:
+    operations = [
         ('+', operator.add),
         ('-', operator.sub),
         ('*', operator.mul),
-    )
+    ]
 
     a = random.randint(1, 100)
     b = random.randint(1, 100)
 
-    op, fn = random.choice(operators)
+    operation, function = random.choice(operations)
 
-    answer = fn(a, b)
+    answer = function(a, b)
+    question = f'{a} {operation} {b}'
 
-    return GameRound(question=f'{a} {op} {b}', answer=str(answer))
+    return GameRound(question=question, answer=str(answer))

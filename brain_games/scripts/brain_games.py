@@ -1,8 +1,8 @@
-from brain_games.cli import welcome
+from brain_games.engine import run
 
 
 def main():
-    welcome()
+    run()
 
 
 if __name__ == '__main__':

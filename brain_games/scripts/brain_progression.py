@@ -1,11 +1,11 @@
-from brain_games.games.brain_progression import game
+from brain_games.games import brain_progression
 from brain_games.engine import run
 
 
 def main():
     run(
-        game=game,
-        description='What number is missing in the progression?'
+        round_starter=brain_progression.prepare_round,
+        description=brain_progression.DESCRIPTION
     )
 
 

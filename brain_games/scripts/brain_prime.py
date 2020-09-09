@@ -1,13 +1,11 @@
-from brain_games.games.brain_prime import game
+from brain_games.games import brain_prime
 from brain_games.engine import run
 
 
 def main():
     run(
-        game=game,
-        description=(
-            'Answer "yes" if given number is prime. Otherwise answer "no".'
-        )
+        round_starter=brain_prime.prepare_round,
+        description=brain_prime.DESCRIPTION
     )
 
 

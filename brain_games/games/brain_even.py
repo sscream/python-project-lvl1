@@ -1,11 +1,13 @@
 from random import randint
 
-from .meta import GameRound
+from brain_games.meta import GameRound
 
 
-def game() -> GameRound:
+DESCRIPTION = 'Answer "yes" if number even otherwise answer "no".'
+
+
+def prepare_round() -> GameRound:
     number = randint(1, 100)
     answer = 'no' if number % 2 else 'yes'
-    question = f'Question: {number}'
 
-    return GameRound(question=question, answer=answer)
+    return GameRound(question=str(number), answer=answer)
