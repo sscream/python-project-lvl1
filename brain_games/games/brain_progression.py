@@ -11,20 +11,21 @@ def prepare_round() -> GameRound:
 
     start = randint(0, 100)
     step = randint(1, 10)
-    missing_index = randint(0, length - 1)
+    missing_element_index = randint(0, length - 1)
 
-    progression = []
+    progression = [
+        str(start + i * step)
+        for i in range(length)
+    ]
 
-    for i in range(length):
-        num = str(start + i * step)
+    answer = progression[missing_element_index]
 
-        if i == missing_index:
-            progression.append('..')
-            answer = num
-        else:
-            progression.append(num)
+    question = ' '.join([
+        number if i != missing_element_index else '..'
+        for i, number in enumerate(progression)
+    ])
 
     return GameRound(
-        question=' '.join(progression),
+        question=question,
         answer=answer
     )

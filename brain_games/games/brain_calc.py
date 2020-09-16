@@ -17,9 +17,9 @@ def prepare_round() -> GameRound:
     a = random.randint(1, 100)
     b = random.randint(1, 100)
 
-    operation, function = random.choice(operations)
+    sign, operation = random.choice(operations)
 
-    answer = function(a, b)
-    question = f'{a} {operation} {b}'
+    answer = operation(a, b)
+    question = f'{a} {sign} {b}'
 
     return GameRound(question=question, answer=str(answer))

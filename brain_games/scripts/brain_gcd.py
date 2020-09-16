@@ -3,10 +3,7 @@ from brain_games.engine import run
 
 
 def main():
-    run(
-        round_starter=brain_gcd.prepare_round,
-        description=brain_gcd.DESCRIPTION
-    )
+    run(brain_gcd)
 
 
 if __name__ == '__main__':

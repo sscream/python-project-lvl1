@@ -3,10 +3,7 @@ from brain_games.engine import run
 
 
 def main():
-    run(
-        round_starter=brain_even.prepare_round,
-        description=brain_even.DESCRIPTION
-    )
+    run(brain_even)
 
 
 if __name__ == '__main__':

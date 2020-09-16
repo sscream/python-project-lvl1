@@ -7,7 +7,7 @@ DESCRIPTION = 'Find the greatest common divisor of given numbers.'
 
 
 def compute_gcd(a, b):
-    if(b == 0):
+    if b == 0:
         return a
     else:
         return compute_gcd(b, a % b)

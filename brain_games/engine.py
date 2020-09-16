@@ -1,24 +1,23 @@
 import typing
 import prompt
 
-from brain_games.meta import GameRound
 
-
-def run(
-    round_starter: typing.Optional[typing.Callable[[], GameRound]] = None,
-    description: str = '', rounds_total: int = 3
-):
+def run(game: typing.Optional = None, rounds_total: int = 3):
     print('Welcome to the Brain Games!')
-    print(description)
+
+    description = getattr(game, 'DESCRIPTION', None)
+
+    if description is not None:
+        print(description)
 
     name = prompt.string('May I have your name? ')
     print(f'Hello {name}')
 
-    if round_starter is not None:
+    if game is not None:
         current_round_num = 0
 
         while current_round_num < rounds_total:
-            question, answer = round_starter()
+            question, answer = game.prepare_round()
 
             print(f'Question: {question}')
 
