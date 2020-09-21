@@ -1,3 +1,10 @@
+"""
+brain games engine
+
+pass game attribute as a game module with 'DESCRIPTION' property
+and 'prepare_round' method to run game
+"""
+
 import typing
 import prompt
 
@@ -5,10 +12,8 @@ import prompt
 def run(game: typing.Optional = None, rounds_total: int = 3):
     print('Welcome to the Brain Games!')
 
-    description = getattr(game, 'DESCRIPTION', None)
-
-    if description is not None:
-        print(description)
+    if game is not None:
+        print(game.DESCRIPTION)
 
     name = prompt.string('May I have your name? ')
     print(f'Hello {name}')
@@ -29,7 +34,7 @@ def run(game: typing.Optional = None, rounds_total: int = 3):
             else:
                 print(
                     f"'{user_answer}' is wrong answer ;(. "
-                    f"Correct answer was '{answer}'. "
+                    f"Correct answer was '{answer}'.\n"
                     f"Let's try again, {name}!"
                 )
                 return
